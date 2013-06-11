@@ -7,6 +7,6 @@ package pianoproject;
 public class PianoPracticeLauncher {
 
   public static void main(String[] args) {
-    NotesDisplay display = new NotesDisplay();
+    PianoPracticeManager manager = new PianoPracticeManager();
   }
 }
