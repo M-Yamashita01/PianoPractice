@@ -55,6 +55,7 @@ public class NotesDisplay {
     JButton noteSo = new JButton("ソ"); //$NON-NLS-1$
     JButton noteRa = new JButton("ラ"); //$NON-NLS-1$
     JButton noteShi = new JButton("シ"); //$NON-NLS-1$
+    noteDo.addActionListener(new ButtonActionListener());
     p.add(noteDo);
     p.add(noteRe);
     p.add(noteMi);
