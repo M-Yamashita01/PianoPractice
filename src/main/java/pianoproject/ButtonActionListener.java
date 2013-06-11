@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 public class ButtonActionListener implements ActionListener {
 
   String note;
+  boolean isAnswered = false;
 
   /**
    * 新しく生成された<code>ButtonActionListener</code>オブジェクトを初期化します。
@@ -19,6 +20,7 @@ public class ButtonActionListener implements ActionListener {
    */
   public ButtonActionListener(String text) {
     this.note = text;
+    this.isAnswered = false;
   }
 
   @Override
@@ -26,6 +28,10 @@ public class ButtonActionListener implements ActionListener {
     System.out.println("Button pressed"); //$NON-NLS-1$
     AnswerChecker checker = new AnswerChecker();
     checker.showWindow(this.note);
+    this.isAnswered = true;
   }
 
+  public boolean isAnswered() {
+    return this.isAnswered;
+  }
 }

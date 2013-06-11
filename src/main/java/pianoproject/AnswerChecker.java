@@ -10,13 +10,6 @@ import javax.swing.JOptionPane;
 public class AnswerChecker {
 
   /**
-   * 新しく生成された<code>AnswerChecker</code>オブジェクトを初期化します。
-   */
-  public AnswerChecker() {
-
-  }
-
-  /**
    * @param note
    * 
    */

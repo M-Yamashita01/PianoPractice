@@ -2,6 +2,7 @@ package pianoproject;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -17,6 +18,8 @@ import javax.swing.JPanel;
 public class NotesDisplay {
 
   private JFrame frame;
+  private File[] files;
+  private int fileCount = 0;
 
   /**
    * 新しく生成された<code>NotesDisplay</code>オブジェクトを初期化します。
@@ -25,14 +28,27 @@ public class NotesDisplay {
     this.frame = new JFrame("ピアノ練習アプリ"); //$NON-NLS-1$
     this.frame.setSize(600, 500);
     this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setNotesDisplay();
     setButton();
+    File dir = new File("./"); //$NON-NLS-1$
+    this.files = dir.listFiles();
+    shuffleFiles();
+    setNotesDisplay();
     this.frame.setVisible(true);
+  }
+
+  private void shuffleFiles() {
+    for (int i = 0; i < this.files.length; i++) {
+      int dst = (int)Math.floor(Math.random() * (i + 1));
+      File tmp = this.files[i];
+      this.files[i] = this.files[dst];
+      this.files[dst] = tmp;
+    }
   }
 
   private void setNotesDisplay() {
     JPanel p = new JPanel();
-    ImageIcon notes = new ImageIcon("./Notes.gif"); //$NON-NLS-1$
+    String filePath = this.files[this.fileCount].getAbsolutePath();
+    ImageIcon notes = new ImageIcon(filePath);
     JLabel label = new JLabel(notes);
     p.add(label);
     Container con = this.frame.getContentPane();
@@ -43,7 +59,7 @@ public class NotesDisplay {
     JPanel p = createButton();
     Container con = this.frame.getContentPane();
     con.add(p, BorderLayout.SOUTH);
-    
+
   }
 
   private static JPanel createButton() {
@@ -68,6 +84,11 @@ public class NotesDisplay {
 
   public void showNotes() {
 
+  }
+
+  public void showNextNotesDisplay() {
+    setNotesDisplay();
+    this.frame.setVisible(true);
   }
 
 }
