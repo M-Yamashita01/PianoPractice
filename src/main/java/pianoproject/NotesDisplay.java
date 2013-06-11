@@ -23,11 +23,11 @@ public class NotesDisplay {
    */
   public NotesDisplay() {
     this.frame = new JFrame("ピアノ練習アプリ"); //$NON-NLS-1$
-    this.frame.setVisible(true);
     this.frame.setSize(600, 500);
     this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setNotesDisplay();
     setButton();
+    this.frame.setVisible(true);
   }
 
   private void setNotesDisplay() {
