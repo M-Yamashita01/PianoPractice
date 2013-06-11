@@ -29,7 +29,7 @@ public class NotesDisplay {
     this.frame.setSize(600, 500);
     this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setButton();
-    File dir = new File("./"); //$NON-NLS-1$
+    File dir = new File("./src/main/resources/"); //$NON-NLS-1$
     this.files = dir.listFiles();
     shuffleFiles();
     setNotesDisplay();
@@ -48,6 +48,7 @@ public class NotesDisplay {
   private void setNotesDisplay() {
     JPanel p = new JPanel();
     String filePath = this.files[this.fileCount].getAbsolutePath();
+    this.fileCount++;
     ImageIcon notes = new ImageIcon(filePath);
     JLabel label = new JLabel(notes);
     p.add(label);
@@ -87,6 +88,9 @@ public class NotesDisplay {
   }
 
   public void showNextNotesDisplay() {
+    if (this.files.length <= this.fileCount) {
+      shuffleFiles();
+    }
     setNotesDisplay();
     this.frame.setVisible(true);
   }
