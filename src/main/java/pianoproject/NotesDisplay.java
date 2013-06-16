@@ -83,16 +83,12 @@ public class NotesDisplay {
     return p;
   }
 
-  public void showNotes() {
-
-  }
-
   public void showNextNotesDisplay() {
     if (this.files.length <= this.fileCount) {
+      this.fileCount=0;
       shuffleFiles();
     }
     setNotesDisplay();
     this.frame.setVisible(true);
   }
-
 }
