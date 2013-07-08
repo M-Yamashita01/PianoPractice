@@ -102,7 +102,7 @@ public class NotesDisplay extends JFrame {
 		this.setVisible(true);
 	}
 
-	public File getDisplayFile() {
-		return this.files[this.fileCount];
+	public File getCurrentDisplayFile() {
+		return this.files[this.fileCount - 1];
 	}
 }

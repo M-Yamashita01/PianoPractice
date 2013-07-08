@@ -1,10 +1,8 @@
 package pianoproject;
 
 import java.io.File;
-import java.nio.file.Files;
 
 import javax.swing.JOptionPane;
-
 
 /**
  * @author yamashita
@@ -12,16 +10,23 @@ import javax.swing.JOptionPane;
  */
 public class AnswerChecker {
 
-  /**
-   * @param note
-   * @param notesDisplay
-   * 
-   */
-  public void showWindow(String note, NotesDisplay notesDisplay) {
-    File file = notesDisplay.getDisplayFile();
-    System.out.println(file.getName());
-    JOptionPane.showMessageDialog(null, note + "が押されました"); //$NON-NLS-1$
-    notesDisplay.showNextNotesDisplay();
-  }
+	/**
+	 * @param selectedNote
+	 * @param notesDisplay
+	 * 
+	 */
+	public void showWindow(String selectedNote, NotesDisplay notesDisplay) {
+		File file = notesDisplay.getCurrentDisplayFile();
+		String displayNote = file.getName().substring(0,
+				file.getName().length() - 4);
 
+		displayNote = Notes2Katakana.getKatakanaNotes(displayNote);
+		if (selectedNote.equals(displayNote)) {
+			JOptionPane.showMessageDialog(null, "正解！"); //$NON-NLS-1$			
+		} else {
+			JOptionPane.showMessageDialog(null, "ハズレ・・・"); //$NON-NLS-1$			
+		}
+
+		notesDisplay.showNextNotesDisplay();
+	}
 }
