@@ -1,5 +1,8 @@
 package pianoproject;
 
+import java.io.File;
+import java.nio.file.Files;
+
 import javax.swing.JOptionPane;
 
 
@@ -15,8 +18,10 @@ public class AnswerChecker {
    * 
    */
   public void showWindow(String note, NotesDisplay notesDisplay) {
+    File file = notesDisplay.getDisplayFile();
+    System.out.println(file.getName());
     JOptionPane.showMessageDialog(null, note + "が押されました"); //$NON-NLS-1$
-    notesDisplay.showNextNotesDisplay();    
+    notesDisplay.showNextNotesDisplay();
   }
 
 }

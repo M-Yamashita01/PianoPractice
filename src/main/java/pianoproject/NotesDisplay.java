@@ -96,4 +96,8 @@ public class NotesDisplay extends JFrame {
     setNotesDisplay();
     this.setVisible(true);
   }
+
+  public File getDisplayFile() {
+    return this.files[this.fileCount];
+  }
 }
