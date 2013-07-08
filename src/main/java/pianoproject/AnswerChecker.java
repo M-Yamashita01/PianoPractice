@@ -11,10 +11,12 @@ public class AnswerChecker {
 
   /**
    * @param note
+   * @param notesDisplay
    * 
    */
-  public void showWindow(String note) {
+  public void showWindow(String note, NotesDisplay notesDisplay) {
     JOptionPane.showMessageDialog(null, note + "が押されました"); //$NON-NLS-1$
+    notesDisplay.showNextNotesDisplay();    
   }
 
 }
